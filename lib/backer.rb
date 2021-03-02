@@ -2,11 +2,11 @@
   
   class Backer
 
-    attr_accessor :name ,:backed_projects
+    attr_accessor :name , :project_backer
 
 def initialize(name)
     @name = name
-    @backed_projects = []
+   
 end
 
 def back_project(project)
@@ -16,6 +16,8 @@ def back_project(project)
 end
 
 def backed_projects
- ProjectBacker.all.map {|backer| binding.pry ProjectBacker.backer == self}
+    #binding.pry
+    backed_projects = ProjectBacker.all.select {|pb| pb.backer == self}
+    backed_projects.collect {|backed_projects|  backed_projects.project}
 end
 end
